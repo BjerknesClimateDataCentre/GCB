@@ -13,7 +13,7 @@ Last accessed 2020.07.06
 
 # Requires:
 - Global and regional synthesis SOCAT files
-- A previous version of the GCB for platform-type retrieval
+- A previous years version of the GCB overview for platform-type retrieval
 
 # Order of operations:
 - Regions.py and platform_type.py must be run prior to this script.
