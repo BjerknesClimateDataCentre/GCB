@@ -16,14 +16,13 @@ Last accessed 2020.07.06
 - A previous years version of the GCB overview for platform-type retrieval
 
 # Order of operations:
-- Regions.py and platform_type.py must be run prior to this script.
+- Regions.py and platform_type.py must be run prior to the main GCBoverview_script.
  * Regions.py takes a long time to run. An hour+. Plan accordingly.
 
-- When regions.csv and platform_type.csv is created this script can be run.
-
+- When regions.csv and platform_type.csv is created the main script can be run.
 - The platform type is set to 'None' for all new/unknown platforms. 
-  Go through GCB.csv and identify all new platforms (where platform-type is missing), 
-  add them to the platform_type.csv with prefix, name and type, and run this main script again.
+  Go through GCB.csv and identify all new platforms (where the platform-type is missing).
+  Add them to the platform_type.csv with prefix, name and type, and run the main script again.
 
 - Check the final GCB.csv and identify if any work needs to be done with regards to the DOIs. 
   Remove 'None'-entries if that is preferred. 
