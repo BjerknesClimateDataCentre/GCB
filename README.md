@@ -1,4 +1,4 @@
-# Global Carbon Budget table
+## Global Carbon Budget table
 
 Creates an overview of SOCAT measurements made in the previous year to be used for reporting to the Global Carbon Budget.
 
@@ -11,11 +11,11 @@ platform type is fetched from a separate file assembled from previous years GCB 
 The SOCAT synthesis files are fetched from https://www.socat.info/index.php/data-access/
 Last accessed 2020.07.06
 
-Requires:
+# Requires:
 - Global and regional synthesis SOCAT files
 - A previous version of the GCB for platform-type retrieval
 
-Order of operations:
+# Order of operations:
 - Regions.py and platform_type.py must be run prior to this script.
  * Regions.py takes a long time to run. An hour+. Plan accordingly.
 
