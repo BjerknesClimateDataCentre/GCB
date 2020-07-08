@@ -1,4 +1,4 @@
-# GCB
+# Global Carbon Budget table
 
 Creates an overview of SOCAT measurements made in the previous year to be used for reporting to the Global Carbon Budget.
 
