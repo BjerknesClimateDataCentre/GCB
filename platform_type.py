@@ -3,10 +3,11 @@ Fetches unique platforms and associated platform type from GCB 2018 and writes t
 
 Maren Kjos Karlsen 2020.07.06
 """
+# Better to use the CMEMS summary file or the platform one. It's more complete
 
 import pandas as pd
 
-df = pd.read_csv('2019/GCB2018_Datasets.csv',usecols=['Platform','Platform type','Expocode'])
+df = pd.read_csv('/Users/rocio/Downloads/GCB2019_Datasets.csv',usecols=['Platform','Platform type','Expocode'])
 
 df['Prefix'] = df['Expocode'].str[0:4]
 
