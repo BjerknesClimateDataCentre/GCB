@@ -29,20 +29,26 @@ Maren Kjos Karlsen 2020-07-08
 
 import pandas as pd
 import datetime as dt
+import SOCAT_functions as SOCATf
 
-# Global variables, end of header and start of data will change from year to year
-FILE ='SOCATv2020.tsv'
-END_OF_METADATA=4
-END_OF_HEADER=6301
-START_OF_DATA=6363
-YEAR = '2019'
-
-# To minimize memory-issues only the expocode and datetime information is fetched from the file
+# # Global variables, end of header and start of data will change from year to year
+# FILE ='SOCATv2020.tsv'
+#END_OF_METADATA=4
+#END_OF_HEADER=6301
+# START_OF_DATA=6363
+YEAR = '2021'
+#
+# # To minimize memory-issues only the expocode and datetime information is fetched from the file
 EXP_DATETIME_COLUMNS = [0,4,5,6,7,8,9] #[Expocode,yr,mon,day,hh,mm,ss]
-
+FILE = '/Users/rocio/Downloads/SOCATv2022_synthesis_files/SOCATv2022.tsv'
 
 ### Extracting data content
-dd  = pd.read_csv(FILE, sep='\t', skiprows=START_OF_DATA,dtype=str,usecols=EXP_DATETIME_COLUMNS)
+
+# Maren set up the data types to be all read as string (the default is 0,2 str, rest float)
+# Change in the future?
+dd, df, _, _, _ = SOCATf.read_SOCAT(FILE, 'str')
+
+dd=dd.iloc[:,EXP_DATETIME_COLUMNS]
 print(dd.columns)
 
 ## Reduce dataframe to entries from YEAR (Use only 2019 data)   
@@ -70,8 +76,8 @@ days_per_cruise = num_per_days.groupby(['Expocode']).count()
 
 
 ### Extracting list of datasets
-df = pd.read_csv(FILE, sep='\t', dtype=str, skiprows=END_OF_METADATA, nrows=END_OF_HEADER)
-print(df.columns)
+#df = pd.read_csv(FILE, sep='\t', dtype=str, skiprows=END_OF_METADATA, nrows=END_OF_HEADER)
+#print(df.columns)
 
 # The Start/End time below is the leave/arrive at port date. These do not contain any time-information. 
 # These dates are used to extract cruises starting and/or ending in 2019. They will not be part of the final list. 
@@ -84,7 +90,7 @@ df['End year']=df['End Time'].dt.year
 print(df.columns)
 
 # Reducing dataframe to 2019-data only
-df = df.loc[(df['Start year'] == YEAR) | (df['End year'] == YEAR)]
+df = df.loc[(df['Start year'] == int(YEAR)) | (df['End year'] == int(YEAR))]
 df = df.drop(['Start year','Start Time','End year','End Time','Dataset Name','version'],axis=1) 
 
 
